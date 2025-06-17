@@ -1,11 +1,4 @@
 # render.yaml – deploys LibreChat + free Postgres on Render
-databases:
-  - name: librechat-db
-    plan: free
-    ipAllowList: # allow the web service to connect
-      - source: 0.0.0.0/0
-        description: Anywhere
-
 services:
   - type: web
     name: librechat
@@ -15,12 +8,7 @@ services:
     autoDeploy: true
     envVars:
       - key: PORT          # Render sets PORT for you at runtime, but we keep a default
-        value: 3080
-      # Pull Postgres URL straight from the DB we created above
-      - key: DATABASE_URL
-        fromDatabase:
-          name: librechat-db
-          property: connectionString
+        value: 8080
       # --------- required by LibreChat itself ----------
       - key: DOMAIN_CLIENT
         value: https://$(RENDER_EXTERNAL_HOSTNAME)
@@ -28,7 +16,4 @@ services:
         value: https://$(RENDER_EXTERNAL_HOSTNAME)
       - key: SESSION_SECRET          # make one with `openssl rand -hex 32`
         generateValue: true
-      # Put at least ONE model provider key; example with OpenAI:
-      - key: OPENAI_API_KEY
-        value: <your-openai-key>
       # -------------------------------------------------
