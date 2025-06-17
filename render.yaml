@@ -1,4 +1,3 @@
-# render.yaml – deploys LibreChat + free Postgres on Render
 services:
   - type: web
     name: librechat
@@ -9,11 +8,11 @@ services:
     envVars:
       - key: PORT          # Render sets PORT for you at runtime, but we keep a default
         value: 8080
-      # --------- required by LibreChat itself ----------
+      - key: HOST          # <–– add this block
+        value: 0.0.0.0
       - key: DOMAIN_CLIENT
         value: https://$(RENDER_EXTERNAL_HOSTNAME)
       - key: NEXTAUTH_URL
         value: https://$(RENDER_EXTERNAL_HOSTNAME)
       - key: SESSION_SECRET          # make one with `openssl rand -hex 32`
         generateValue: true
-      # -------------------------------------------------
