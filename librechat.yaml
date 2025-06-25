@@ -222,6 +222,7 @@ endpoints:
       models:
         default:
           [
+            'deepseek-r1-distill-llama-70b',
             'llama3-70b-8192',
             'llama3-8b-8192',
             'llama2-70b-4096',
