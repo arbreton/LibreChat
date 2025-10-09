@@ -129,7 +129,7 @@ registration:
 # Note: If balance.enabled is true, transactions will always be enabled
 # regardless of this setting to ensure balance tracking works correctly
 
-# speech:
+speech:
 #   tts:
 #     openai:
 #       url: ''
