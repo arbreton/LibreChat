@@ -138,11 +138,11 @@ registration:
 #       voices: ['']
 
 #
-#   stt:
-#     openai:
-#       url: ''
-#       apiKey: '${STT_API_KEY}'
-#       model: ''
+   stt:
+     openai:
+       url: 'https://api.openai.com/v1'
+      apiKey: '${STT_API_KEY}'
+       model: 'whisper-1'
 
 # rateLimits:
 #   fileUploads:
